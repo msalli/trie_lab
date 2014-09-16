@@ -22,6 +22,7 @@ describe("Trie", function() {
         expect(e.isWord).toBeTruthy();
         expect(e.characters).toEqual({});
       });
+
       it("learns an extension", function(){
         t.learn("be");
         t.learn("begin");
@@ -29,8 +30,8 @@ describe("Trie", function() {
         expect(e.isWord).toBeTruthy();
         var n = e.characters.g.characters.i.characters.n;
         expect(n.isWord).toBeTruthy();
-
       });
+
       it("learns a prefix", function(){
         t.learn("begin");
         t.learn("be");
@@ -39,7 +40,7 @@ describe("Trie", function() {
         var n = e.characters.g.characters.i.characters.n;
         expect(n.isWord).toBeTruthy();
       });
-    });
+    }); //closing describe learn
 
     describe(".find", function(){
       it("returns falsy for a nonexistent string", function(){
@@ -60,7 +61,7 @@ describe("Trie", function() {
         var ending = t.characters.b.characters.e.characters.g;
         expect(t.find("beg")).toEqual(ending);
       });
-    });
+    }); //closing describe find
 
     describe(".getWords", function(){
       it("gets a child word", function(){
@@ -87,7 +88,8 @@ describe("Trie", function() {
         expect(t.getWords()
           ).toEqual(["begin", "best"]);
       });
-    });
+    }); //closing describe get words
+
     describe(".autoComplete", function(){
       beforeEach(function(){
         t.learn("be");
@@ -114,9 +116,10 @@ describe("Trie", function() {
       it("returns an empty array when there are no completions", function(){
         expect(t.autoComplete("a")).toEqual([]);
       });
-    });
+    }); //closing describe autoComplete
 
-  });
+  }); //describe with a trie function
 
 
-});
+}); //closing starting function
+
